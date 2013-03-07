@@ -1,0 +1,10 @@
+{
+    "$schema": "http://trec-kba.org/schemas/v1.1/filter-topics.json",
+    "topic_set_id": "sample-trec-kba-topics-2013",
+    "target_ids": [
+        "http://twitter.com/mccartneyAP", 
+	"http://en.wikipedia.org/wiki/Charles_Lambert",
+	"http://en.wikipedia.org/wiki/Charles_Fort",
+	"http://en.wikipedia.org/wiki/Brian_Hayes_(scientist)"
+	]
+    }
