@@ -28,7 +28,7 @@ results by default.  To get SSF style output, add the --ssf flag.
 
 You can run it like this:
 
-python toy_kba_system.py --ssf --max 1000 --cutoff 100 trec-kba-ccr-and-ssf-2013-04-22/trec-kba-ccr-and-ssf-query-topics-2013-04-08.json  s3.amazonaws.com/aws-publicdatasets/trec/kba/kba-streamcorpus-2013-v0_2_0/ filter-run.toy_1.txt 
+    python toy_kba_system.py --ssf --max 1000 --cutoff 100 trec-kba-ccr-and-ssf-2013-04-22/trec-kba-ccr-and-ssf-query-topics-2013-04-08.json  s3.amazonaws.com/aws-publicdatasets/trec/kba/kba-streamcorpus-2013-v0_2_0/ filter-run.toy_1.txt 
 
 
 Note that the default in toy_kba_algorithm for generating surface form
