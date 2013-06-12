@@ -1,140 +1,31 @@
-#{"run_type": "automatic", "poc_email": "trec-kba@googlegroups.com", "team_id": "CompInsights", "topic_set_id": "sample-trec-kba-topics-2013", "corpus_id": "tiny-corpus", "$schema": "http://trec-kba.org/schemas/v1.1/filter-run.json", "team_name": "Computable Insights", "system_description_short": "relevance=2,contains_mention=1,confidence=exact_match_name_tokens/num_name_tokens", "system_description": "Collapses entity title strings and documents into sets of words and looks for fraction of exact match overlap with entity titles.  Confidence is fraction of entity title words that appear in doc.", "task_id": "kba-ccr-2012", "poc_name": "TREC KBA Organizers", "run_info": {"num_entities": 4, "num_stream_hours": 3}, "system_id": "toy_1"}
-CompInsights	toy_1	1317997776-5197c3a02c98ab21e3a93eedca52599d	Charles_Fort	333	2	1	2011-10-07-14	NULL	-1	-1
-CompInsights	toy_1	1317997776-e770dcab28c90c6e04f8ffc7e7997499	Charles_Fort	333	2	1	2011-10-07-14	NULL	-1	-1
-CompInsights	toy_1	1317997776-bfadbf19c0d7368507e81832271e721f	Charles_Fort	333	2	1	2011-10-07-14	NULL	-1	-1
-CompInsights	toy_1	1317997776-692c330f685eb24114b779414235c0f4	Charles_Fort	333	2	1	2011-10-07-14	NULL	-1	-1
-CompInsights	toy_1	1317997776-2c77e9b5c8b227e9b9a065383c2c903d	Charles_Fort	333	2	1	2011-10-07-14	NULL	-1	-1
-CompInsights	toy_1	1317997776-ea1b8909f7add2ddb8f282bc984dea72	Charles_Fort	333	2	1	2011-10-07-14	NULL	-1	-1
-CompInsights	toy_1	1317997775-cf6525902444e01c63ed25687f20155a	Charles_Fort	333	2	1	2011-10-07-14	NULL	-1	-1
-CompInsights	toy_1	1317997774-6317199f19030a5ac908664b8954bdab	Charles_Fort	333	2	1	2011-10-07-14	NULL	-1	-1
-CompInsights	toy_1	1317997775-ddaaf029475dfa5d40484feb1d340b37	Charles_Fort	333	2	1	2011-10-07-14	NULL	-1	-1
-CompInsights	toy_1	1317997774-622c9366cd07d019b44d0315b44b063c	Charles_Fort	333	2	1	2011-10-07-14	NULL	-1	-1
-CompInsights	toy_1	1317997774-53471be81f7fb22f213aa1313c48adaf	Charles_Fort	333	2	1	2011-10-07-14	NULL	-1	-1
-CompInsights	toy_1	1317997774-1df0d2ee85b5e70f1104521de2f48d1c	Charles_Fort	333	2	1	2011-10-07-14	NULL	-1	-1
-CompInsights	toy_1	1317997774-d0aaee369aa8b2a24ba74d3247d6b7a2	Charles_Fort	333	2	1	2011-10-07-14	NULL	-1	-1
-CompInsights	toy_1	1317997774-230a6daf682c2e212dcc52dcd37369fd	Charles_Fort	333	2	1	2011-10-07-14	NULL	-1	-1
-CompInsights	toy_1	1317997774-026190bd192ffd3f78fb4c66f4acfd70	Charles_Fort	333	2	1	2011-10-07-14	NULL	-1	-1
-CompInsights	toy_1	1317997774-b4c7adfc6f4b0922d92d4b8abd3a150f	Charles_Fort	333	2	1	2011-10-07-14	NULL	-1	-1
-CompInsights	toy_1	1317997774-2bae3674c77085febfc5d19095eebc66	Charles_Fort	333	2	1	2011-10-07-14	NULL	-1	-1
-CompInsights	toy_1	1317997774-13791260dae3a2995d7c6edf65a1e4c8	Brian_Hayes_(scientist)	409	2	1	2011-10-07-14	NULL	-1	-1
-CompInsights	toy_1	1317997767-511d55a7218adaeaeb75596c0bfb07cd	Charles_Fort	1000	2	1	2011-10-07-14	NULL	-1	-1
-CompInsights	toy_1	1317997767-511d55a7218adaeaeb75596c0bfb07cd	Charles_Lambert	466	2	1	2011-10-07-14	NULL	-1	-1
-CompInsights	toy_1	1317997764-83fd33755414f51b8cdec4b89dc928b9	Brian_Hayes_(scientist)	409	2	1	2011-10-07-14	NULL	-1	-1
-CompInsights	toy_1	1317997764-573ce5497fa2ca1a37d8be6358964d12	Charles_Fort	333	2	1	2011-10-07-14	NULL	-1	-1
-CompInsights	toy_1	1317997711-97fcc4959407732a23e9d4d2b1319890	Charles_Fort	333	2	1	2011-10-07-14	NULL	-1	-1
-CompInsights	toy_1	1317997760-6b39a327f09c982b3a9202feff3d6d53	Charles_Fort	333	2	1	2011-10-07-14	NULL	-1	-1
-CompInsights	toy_1	1317997760-6b39a327f09c982b3a9202feff3d6d53	Brian_Hayes_(scientist)	227	2	1	2011-10-07-14	NULL	-1	-1
-CompInsights	toy_1	1317997760-bc673eb17f450b31f207caaaf6159914	Charles_Fort	333	2	1	2011-10-07-14	NULL	-1	-1
-CompInsights	toy_1	1317997703-711636ebc4ff08f1a9aa9d9471849e53	Charles_Fort	333	2	1	2011-10-07-14	NULL	-1	-1
-CompInsights	toy_1	1317997760-fcdd0197cb0d489c9204155f339eb71f	Charles_Fort	333	2	1	2011-10-07-14	NULL	-1	-1
-CompInsights	toy_1	1317997760-e918c8ae107fc2ca03b905b6507da92d	Charles_Fort	333	2	1	2011-10-07-14	NULL	-1	-1
-CompInsights	toy_1	1317997760-6e25ded835498e42820d27dbcbb871ce	Charles_Fort	333	2	1	2011-10-07-14	NULL	-1	-1
-CompInsights	toy_1	1317997760-32a8507a9271722ade0f7348af7d97a4	Charles_Fort	333	2	1	2011-10-07-14	NULL	-1	-1
-CompInsights	toy_1	1317997760-cada2fa37a1f23b175b13e3a3a039720	Charles_Fort	333	2	1	2011-10-07-14	NULL	-1	-1
-CompInsights	toy_1	1317997760-cada2fa37a1f23b175b13e3a3a039720	Charles_Lambert	466	2	1	2011-10-07-14	NULL	-1	-1
-CompInsights	toy_1	1317997757-dcc89212c2715ccb6f13a42d30b5eb45	Charles_Fort	333	2	1	2011-10-07-14	NULL	-1	-1
-CompInsights	toy_1	1320104400-19338374532f3bcc23a0469fb316cc9b	Charles_Fort	333	2	1	2011-10-31-23	NULL	-1	-1
-CompInsights	toy_1	1320105000-db0fd4ed1eabab792faafa7b414101fe	Charles_Fort	333	2	1	2011-10-31-23	NULL	-1	-1
-CompInsights	toy_1	1320105000-729ea5cb926999c96ce194c9e0e8f092	Charles_Fort	333	2	1	2011-10-31-23	NULL	-1	-1
-CompInsights	toy_1	1320104940-fb3cd2d0d9dc062298e42b35759f2fdb	Charles_Fort	333	2	1	2011-10-31-23	NULL	-1	-1
-CompInsights	toy_1	1320104940-fb3cd2d0d9dc062298e42b35759f2fdb	Brian_Hayes_(scientist)	227	2	1	2011-10-31-23	NULL	-1	-1
-CompInsights	toy_1	1320104940-1c14c72270350d18f2f1fbe8128a85cb	Charles_Fort	333	2	1	2011-10-31-23	NULL	-1	-1
-CompInsights	toy_1	1320103740-e2acf466011a6659156b15784c12b8f0	Charles_Fort	333	2	1	2011-10-31-23	NULL	-1	-1
-CompInsights	toy_1	1320105480-34085ba88e39fa40c1d6dc354fe20369	Charles_Fort	333	2	1	2011-10-31-23	NULL	-1	-1
-CompInsights	toy_1	1320105300-f337d6ef0cd9990272134a171028ba9e	mccartneyAP	1000	2	1	2011-10-31-23	NULL	-1	-1
-CompInsights	toy_1	1320103740-0387b8c194a6f66d9f866576d380e95e	Charles_Fort	333	2	1	2011-10-31-23	NULL	-1	-1
-CompInsights	toy_1	1320103740-0387b8c194a6f66d9f866576d380e95e	Brian_Hayes_(scientist)	227	2	1	2011-10-31-23	NULL	-1	-1
-CompInsights	toy_1	1320104400-9fd81b39d1640290e3fd5c175d22a388	Charles_Fort	333	2	1	2011-10-31-23	NULL	-1	-1
-CompInsights	toy_1	1320104760-81d67cdccda411e7246f86c39054cbc9	Charles_Fort	333	2	1	2011-10-31-23	NULL	-1	-1
-CompInsights	toy_1	1320104760-cfbc380e4183dc3e6a30457eafa0c802	Brian_Hayes_(scientist)	227	2	1	2011-10-31-23	NULL	-1	-1
-CompInsights	toy_1	1320105300-029f4be814e4fee73a7ee65c2d15272c	Brian_Hayes_(scientist)	409	2	1	2011-10-31-23	NULL	-1	-1
-CompInsights	toy_1	1320105300-12a189f64d7201c4b081bca73db13719	Brian_Hayes_(scientist)	409	2	1	2011-10-31-23	NULL	-1	-1
-CompInsights	toy_1	1320105300-66f80a634c10f4104ea246d6e17154c7	Charles_Fort	333	2	1	2011-10-31-23	NULL	-1	-1
-CompInsights	toy_1	1320104760-670627696faf8bcd0cb32577a0a4278b	Charles_Fort	333	2	1	2011-10-31-23	NULL	-1	-1
-CompInsights	toy_1	1320104760-e18e61a2e7cbff2e49401a582213ea5f	Charles_Fort	333	2	1	2011-10-31-23	NULL	-1	-1
-CompInsights	toy_1	1320104760-76cadca728344779393d7f0bf0fbc55c	Charles_Fort	583	2	1	2011-10-31-23	NULL	-1	-1
-CompInsights	toy_1	1320104760-76cadca728344779393d7f0bf0fbc55c	Charles_Lambert	1000	2	1	2011-10-31-23	NULL	-1	-1
-CompInsights	toy_1	1320104760-76cadca728344779393d7f0bf0fbc55c	Brian_Hayes_(scientist)	409	2	1	2011-10-31-23	NULL	-1	-1
-CompInsights	toy_1	1320104760-a7e05105ba96007d7872f5b15a56a407	Charles_Fort	333	2	1	2011-10-31-23	NULL	-1	-1
-CompInsights	toy_1	1320104760-a7e05105ba96007d7872f5b15a56a407	Brian_Hayes_(scientist)	409	2	1	2011-10-31-23	NULL	-1	-1
-CompInsights	toy_1	1320104400-3b9fe37c326fc3636446cfd0ed5e7e16	Charles_Fort	333	2	1	2011-10-31-23	NULL	-1	-1
-CompInsights	toy_1	1320103440-edba542248f72b8924f084d57899a90e	Brian_Hayes_(scientist)	409	2	1	2011-10-31-23	NULL	-1	-1
-CompInsights	toy_1	1320103440-34cf3d0c52b7d929e7d6f910aad7fa50	Brian_Hayes_(scientist)	409	2	1	2011-10-31-23	NULL	-1	-1
-CompInsights	toy_1	1320105000-d46b844e8ac8c1d61b742369a36bb4c8	Charles_Fort	333	2	1	2011-10-31-23	NULL	-1	-1
-CompInsights	toy_1	1320105000-b7b3e3246c94213ec181e7ae2c830088	Charles_Fort	333	2	1	2011-10-31-23	NULL	-1	-1
-CompInsights	toy_1	1320105300-c336ca533121e73a298e507faf1a9634	Charles_Fort	333	2	1	2011-10-31-23	NULL	-1	-1
-CompInsights	toy_1	1320105480-f04f7d21be8149fa6c16bfcbf5a2f253	Charles_Fort	333	2	1	2011-10-31-23	NULL	-1	-1
-CompInsights	toy_1	1320104940-b355ba00ea1cb89a15e4c28512562569	Charles_Fort	333	2	1	2011-10-31-23	NULL	-1	-1
-CompInsights	toy_1	1320104400-00d41256945a62fc8a768df07e5dee43	Charles_Fort	333	2	1	2011-10-31-23	NULL	-1	-1
-CompInsights	toy_1	1320105480-e173d260514a619819120e78ddb0b315	Charles_Fort	333	2	1	2011-10-31-23	NULL	-1	-1
-CompInsights	toy_1	1320104760-f25a6e62f796adaf5d3e9d323858fbef	Brian_Hayes_(scientist)	227	2	1	2011-10-31-23	NULL	-1	-1
-CompInsights	toy_1	1320104400-b5e956c2a3c11a2a21ecea641b3408d5	Charles_Fort	333	2	1	2011-10-31-23	NULL	-1	-1
-CompInsights	toy_1	1320104940-e4008842f56e0abcc051603da8c024b9	Charles_Fort	333	2	1	2011-10-31-23	NULL	-1	-1
-CompInsights	toy_1	1320105480-d81d30ac63624054773ad5a6e8abbe9b	Charles_Fort	333	2	1	2011-10-31-23	NULL	-1	-1
-CompInsights	toy_1	1320103920-dfed6fe78288392350f3bde091611d1d	Charles_Lambert	466	2	1	2011-10-31-23	NULL	-1	-1
-CompInsights	toy_1	1320104940-49e4fc9061a4c42fe94c275e9398baa1	Charles_Fort	333	2	1	2011-10-31-23	NULL	-1	-1
-CompInsights	toy_1	1320104400-dd9bd394634f187af556d2fa236e504d	Charles_Fort	333	2	1	2011-10-31-23	NULL	-1	-1
-CompInsights	toy_1	1320104400-dd9bd394634f187af556d2fa236e504d	Brian_Hayes_(scientist)	409	2	1	2011-10-31-23	NULL	-1	-1
-CompInsights	toy_1	1320103920-41677ec95abd8dc27c8cb7c46c636628	Charles_Fort	333	2	1	2011-10-31-23	NULL	-1	-1
-CompInsights	toy_1	1320104220-baf2aa8f30fb303f08b2e87fefc98c4d	Charles_Fort	333	2	1	2011-10-31-23	NULL	-1	-1
-CompInsights	toy_1	1320104220-a931809e3f678f7b3b76fda743337005	Charles_Fort	333	2	1	2011-10-31-23	NULL	-1	-1
-CompInsights	toy_1	1320103920-55bddd9b2cbc9ac4b6ce3b5fbfce5da7	Charles_Fort	333	2	1	2011-10-31-23	NULL	-1	-1
-CompInsights	toy_1	1320104460-321ca92899abf416b11731f77f40a521	Charles_Fort	333	2	1	2011-10-31-23	NULL	-1	-1
-CompInsights	toy_1	1320105540-0643608dfbf540669edfa39c6b327dfc	Charles_Fort	583	2	1	2011-10-31-23	NULL	-1	-1
-CompInsights	toy_1	1320105540-0643608dfbf540669edfa39c6b327dfc	Charles_Lambert	466	2	1	2011-10-31-23	NULL	-1	-1
-CompInsights	toy_1	1320103740-0dda0152d9e334699d7d779cc8d2d6d5	Charles_Fort	333	2	1	2011-10-31-23	NULL	-1	-1
-CompInsights	toy_1	1320104460-cf38cb20ee7c08ace9224c5692f2a55c	Charles_Fort	333	2	1	2011-10-31-23	NULL	-1	-1
-CompInsights	toy_1	1320103920-c35ed995a8b47f04929d2c352d95f850	Brian_Hayes_(scientist)	227	2	1	2011-10-31-23	NULL	-1	-1
-CompInsights	toy_1	1320103440-7cd1ac57c8d0b60205a85b0bd26817b0	Charles_Fort	333	2	1	2011-10-31-23	NULL	-1	-1
-CompInsights	toy_1	1320103740-d901c622fd6e644b0960a09076050cf8	Brian_Hayes_(scientist)	227	2	1	2011-10-31-23	NULL	-1	-1
-CompInsights	toy_1	1320103740-9f38ccf58eeca718fd27c156d4409b9b	Charles_Fort	333	2	1	2011-10-31-23	NULL	-1	-1
-CompInsights	toy_1	1320105300-4db7a8797a18e4fc4427613ca76c2c70	Charles_Fort	333	2	1	2011-10-31-23	NULL	-1	-1
-CompInsights	toy_1	1320105300-1a8e13cd2116f0e8a4fda36d45fa30e9	Charles_Fort	333	2	1	2011-10-31-23	NULL	-1	-1
-CompInsights	toy_1	1320103920-89bab3997070b81d2f66c4ff018ba080	Charles_Fort	333	2	1	2011-10-31-23	NULL	-1	-1
-CompInsights	toy_1	1320103920-335a3f9df4f547ecc65c70838aebe9c5	Charles_Fort	333	2	1	2011-10-31-23	NULL	-1	-1
-CompInsights	toy_1	1320103920-1edb4f41036612b1879e3959e14367c5	Charles_Fort	333	2	1	2011-10-31-23	NULL	-1	-1
-CompInsights	toy_1	1320103920-d883e4581896dc248c1f972df29bfbd1	Charles_Fort	333	2	1	2011-10-31-23	NULL	-1	-1
-CompInsights	toy_1	1357052186-ae09ed177bb969fea87cfb3f4f986d0a	Brian_Hayes_(scientist)	227	2	1	2013-01-01-14	NULL	-1	-1
-CompInsights	toy_1	1357052187-733980dbf82bb86fbcc960347de4fbb7	Charles_Fort	333	2	1	2013-01-01-14	NULL	-1	-1
-CompInsights	toy_1	1357052187-19e4067a01b0b2669212b096f35441c0	Charles_Fort	333	2	1	2013-01-01-14	NULL	-1	-1
-CompInsights	toy_1	1357052187-a96165db06a9d88ebba373d028ab4525	Charles_Fort	333	2	1	2013-01-01-14	NULL	-1	-1
-CompInsights	toy_1	1357052187-08a4512cf6a7534540cc33354dc6fd22	Charles_Fort	333	2	1	2013-01-01-14	NULL	-1	-1
-CompInsights	toy_1	1357052187-81677c589cdeeb261026ce1625cb597d	Charles_Fort	333	2	1	2013-01-01-14	NULL	-1	-1
-CompInsights	toy_1	1357052187-71101f4d1ad041507bd2c0d1248f9059	Charles_Fort	333	2	1	2013-01-01-14	NULL	-1	-1
-CompInsights	toy_1	1357052187-7110fa8be19807cf25344ee352f5b887	Charles_Fort	333	2	1	2013-01-01-14	NULL	-1	-1
-CompInsights	toy_1	1357052187-7110fa8be19807cf25344ee352f5b887	Brian_Hayes_(scientist)	409	2	1	2013-01-01-14	NULL	-1	-1
-CompInsights	toy_1	1357052188-04207dfbf3ca9cd935f876144e16863b	Charles_Fort	333	2	1	2013-01-01-14	NULL	-1	-1
-CompInsights	toy_1	1357052188-7d55c4bc0980dd23542ad0f4e8e8e482	Charles_Fort	333	2	1	2013-01-01-14	NULL	-1	-1
-CompInsights	toy_1	1357052189-d0776129903fdd1b991dd969dd59c0b2	Charles_Fort	333	2	1	2013-01-01-14	NULL	-1	-1
-CompInsights	toy_1	1357052190-8f7a8b30a9a8f671dcc979677b04fab4	Brian_Hayes_(scientist)	227	2	1	2013-01-01-14	NULL	-1	-1
-CompInsights	toy_1	1357052192-10a1a505686cab6c3c12b59bc786d9c0	Brian_Hayes_(scientist)	227	2	1	2013-01-01-14	NULL	-1	-1
-CompInsights	toy_1	1357052192-0c0d4dcea4b1b4883b3bb049496ef448	Brian_Hayes_(scientist)	227	2	1	2013-01-01-14	NULL	-1	-1
-CompInsights	toy_1	1357052194-81debf4cec576467d7770d93a6cb89a1	Brian_Hayes_(scientist)	227	2	1	2013-01-01-14	NULL	-1	-1
-CompInsights	toy_1	1357052195-5079cadbd498d599e7edcc3ad18be379	Charles_Fort	333	2	1	2013-01-01-14	NULL	-1	-1
-CompInsights	toy_1	1357052196-ea87c1735331fa7360e0aec7fdd72352	Brian_Hayes_(scientist)	227	2	1	2013-01-01-14	NULL	-1	-1
-CompInsights	toy_1	1357052198-0509fe072282b357af405939b75afcf2	Brian_Hayes_(scientist)	227	2	1	2013-01-01-14	NULL	-1	-1
-CompInsights	toy_1	1357052198-0c1474cab38daf80f40a63b8fa69ab85	Charles_Fort	333	2	1	2013-01-01-14	NULL	-1	-1
-CompInsights	toy_1	1357052200-54f6f6e096a4cae27bee55dc2e0dc2b6	Charles_Fort	583	2	1	2013-01-01-14	NULL	-1	-1
-CompInsights	toy_1	1357052200-54f6f6e096a4cae27bee55dc2e0dc2b6	Charles_Lambert	466	2	1	2013-01-01-14	NULL	-1	-1
-CompInsights	toy_1	1357052200-54f6f6e096a4cae27bee55dc2e0dc2b6	Brian_Hayes_(scientist)	409	2	1	2013-01-01-14	NULL	-1	-1
+#{"run_type": "automatic", "poc_email": "trec-kba@googlegroups.com", "team_id": "CompInsights", "topic_set_id": "kba-2013-ccr-and-ssf", "corpus_id": "kba-streamcorpus-2013-v0_2_0", "$schema": "http://trec-kba.org/schemas/v1.1/filter-run.json", "team_name": "Computable Insights", "system_description_short": "relevance=2, exact name match, longest sentence slot fills", "system_description": "Entity title strings are used as surface form names, then any document containing one of the surface form names is ranked vital with confidence proportional to length of surface form name, and the longest sentence containing the longest surface form name is treated as a slot fill for all slot types for the given entity type.", "task_id": "kba-ccr-2013", "poc_name": "TREC KBA Organizers", "run_info": {"num_entities": 170, "num_stream_hours": 8951}, "system_id": "toy_1"}
+CompInsights	toy_1	1317995861-4c6376217ea27bb954f96164c7cdc8ab	http://en.wikipedia.org/wiki/The_Ritz_Apartment_(Ocala,_Florida)	1000	2	1	2011-10-07-14	Affiliate	19ed38ac70555a9f1bbf26feb79764bf	1057-1263
+CompInsights	toy_1	1317995861-4c6376217ea27bb954f96164c7cdc8ab	http://en.wikipedia.org/wiki/The_Ritz_Apartment_(Ocala,_Florida)	1000	2	1	2011-10-07-14	Contact_Meet_Entity	19ed38ac70555a9f1bbf26feb79764bf	1057-1263
+CompInsights	toy_1	1317995861-4c6376217ea27bb954f96164c7cdc8ab	http://en.wikipedia.org/wiki/Appleton_Museum_of_Art	1000	2	1	2011-10-07-14	Affiliate	19ed38ac70555a9f1bbf26feb79764bf	1057-1263
+CompInsights	toy_1	1317995861-4c6376217ea27bb954f96164c7cdc8ab	http://en.wikipedia.org/wiki/Appleton_Museum_of_Art	1000	2	1	2011-10-07-14	Contact_Meet_Entity	19ed38ac70555a9f1bbf26feb79764bf	1057-1263
+CompInsights	toy_1	1317995861-4c6376217ea27bb954f96164c7cdc8ab	http://en.wikipedia.org/wiki/Bill_Coen	1000	2	1	2011-10-07-14	Affiliate	fc9c67b4ca0bdeaf2cac34c3d6edb192	0-303
+CompInsights	toy_1	1317995861-4c6376217ea27bb954f96164c7cdc8ab	http://en.wikipedia.org/wiki/Bill_Coen	1000	2	1	2011-10-07-14	AssociateOf	fc9c67b4ca0bdeaf2cac34c3d6edb192	0-303
+CompInsights	toy_1	1317995861-4c6376217ea27bb954f96164c7cdc8ab	http://en.wikipedia.org/wiki/Bill_Coen	1000	2	1	2011-10-07-14	Contact_Meet_PlaceTime	fc9c67b4ca0bdeaf2cac34c3d6edb192	0-303
+CompInsights	toy_1	1317995861-4c6376217ea27bb954f96164c7cdc8ab	http://en.wikipedia.org/wiki/Bill_Coen	1000	2	1	2011-10-07-14	AwardsWon	fc9c67b4ca0bdeaf2cac34c3d6edb192	0-303
+<snip...>
 #{
-#    "run_type": "automatic", 
-#    "poc_email": "trec-kba@googlegroups.com", 
-#    "team_id": "CompInsights", 
-#    "topic_set_id": "sample-trec-kba-topics-2013", 
-#    "corpus_id": "tiny-corpus", 
 #    "$schema": "http://trec-kba.org/schemas/v1.1/filter-run.json", 
-#    "team_name": "Computable Insights", 
-#    "system_description_short": "relevance=2,contains_mention=1,confidence=exact_match_name_tokens/num_name_tokens", 
-#    "system_description": "Collapses entity title strings and documents into sets of words and looks for fraction of exact match overlap with entity titles.  Confidence is fraction of entity title words that appear in doc.", 
-#    "task_id": "kba-ccr-2012", 
+#    "corpus_id": "kba-streamcorpus-2013-v0_2_0", 
+#    "poc_email": "trec-kba@googlegroups.com", 
 #    "poc_name": "TREC KBA Organizers", 
 #    "run_info": {
-#        "num_filter_results": 118, 
-#        "elapsed_time": 52.14945411682129, 
-#        "num_entities": 4, 
-#        "num_entity_doc_compares": 3312, 
+#        "elapsed_time": 4.623950004577637, 
+#        "num_entities": 170, 
+#        "num_entity_doc_compares": 170000, 
+#        "num_filter_results": 16458, 
 #        "num_stream_hours": 3
 #    }, 
-#    "system_id": "toy_1"
+#    "run_type": "automatic", 
+#    "system_description": "Entity title strings are used as surface form names, then any document containing one of the surface form names is ranked vital with confidence proportional to length of surface form name, and the longest sentence containing the longest surface form name is treated as a slot fill for all slot types for the given entity type.", 
+#    "system_description_short": "relevance=2, exact name match, longest sentence slot fills", 
+#    "system_id": "toy_1", 
+#    "task_id": "kba-ssf-2013", 
+#    "team_id": "CompInsights", 
+#    "team_name": "Computable Insights", 
+#    "topic_set_id": "kba-2013-ccr-and-ssf"
 #}
