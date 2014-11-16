@@ -9,7 +9,8 @@ released under the MIT X11 License, see license.txt
 """
 
 ## import standard libraries
-import re
+from __future__ import division
+import regex as re
 import sys
 import json
 import urllib
@@ -20,6 +21,9 @@ import traceback
 from streamcorpus import OffsetType
 
 logger = logging.getLogger('kba-toy-system')
+
+NAMES_FRAC = 'fraction of names'
+LEN_FRAC = 'fraction of longest name'
 
 slot_names = dict(
     PER = ['Affiliate', 'AssociateOf', 'Contact_Meet_PlaceTime', 'AwardsWon', 
@@ -39,7 +43,7 @@ def strip_string(s):
     """
     return white_space_re.sub(" ", s.translate(strip_punctuation).lower())
 
-def prepare_entities(targets, recall_filters=None):
+def prepare_entities(targets, recall_filters=None, slot_names=None):
     """
     Creates a dict keyed on entity URLs with the values set to a
     representation that is efficient for the scorer
@@ -73,7 +77,9 @@ def prepare_entities(targets, recall_filters=None):
         assert len(names) > 0, target
             
         prep[target_id] = dict(parts=names, longest=longest, 
-                               entity_type=target['entity_type'])
+                               entity_type=target['entity_type'],
+                               slot_names=slot_names[target['entity_type']],
+        )
 
     return prep
 
@@ -92,20 +98,21 @@ class Scorer:
             logger.warn("failed to initialize on doc: %s\n" % exc)
             self.ready = False
 
-        if si.body.sentences and 'lingpipe' in si.body.sentences:
-            self.sentences = []
-            for sent in si.body.sentences['lingpipe']:
+        self.sentences = []
+        if si.body.sentences and 'serif' in si.body.sentences:
+            for sent in si.body.sentences['serif']:
+                if not sent.tokens: continue
                 sent_str = strip_string(
                     u' '.join([tok.token.decode('utf8') for tok in sent.tokens]))
-                sent_first = sent.tokens[0].offsets[OffsetType.BYTES].first
-                last_token_offset = sent.tokens[-1].offsets[OffsetType.BYTES]
+                sent_first = sent.tokens[0].offsets[OffsetType.CHARS].first
+                last_token_offset = sent.tokens[-1].offsets[OffsetType.CHARS]
                 sent_last = last_token_offset.first + last_token_offset.length
                 self.sentences.append((sent_str, sent_first, sent_last))
             
         else:
             logger.warn('missing sentences for %s' % si.stream_id)
 
-    def assess_target(self, entity_representation):
+    def assess_target(self, entity_representation, conf_heuristic=LEN_FRAC):
         """
         Searches text for parts of entity_name
 
@@ -124,6 +131,7 @@ class Scorer:
         ## look for name parts in text:
         len_longest_observed_name = 0
         self.longest_observed_name = ''
+        num_observed_names = 0
         for name in entity_representation["parts"]:
             if name in self.text:
                 if len(name) > len_longest_observed_name:
@@ -131,16 +139,27 @@ class Scorer:
                     ## hold on to this string for SSF below
                     self.longest_observed_name = name
 
+                if conf_heuristic == NAMES_FRAC:
+                    num_observed_names += len(re.findall(name, self.text))
+
+            else:
+                pass #print u'%r not in %r' % (name, self.text[:100])
+
         ## default score is 0
         if len_longest_observed_name == 0:
             ## zero confidence, relevance="garbage", non-mentioning
             return 0, -1, 0
 
-        ## normalize score by length of longest name, which is full_name
-        conf_zero_to_one = float(len_longest_observed_name) / entity_representation["longest"]
+        if conf_heuristic == NAMES_FRAC:
+            confidence = min(1000, num_observed_names)
 
-        ## return score in thousandths
-        confidence = int(1000 * conf_zero_to_one)
+        else:
+            assert conf_heuristic == LEN_FRAC
+            ## normalize score by length of longest name, which is full_name
+            conf_zero_to_one = float(len_longest_observed_name) / entity_representation["longest"]
+
+            ## return score in thousandths
+            confidence = int(1000 * conf_zero_to_one)
 
         relevance = 2  ## hard code "vital" level for this toy system
         
@@ -163,7 +182,7 @@ class Scorer:
                     longest_sentence = sent_str
 
                     ## construct original byte range for this sentence
-                    byte_range = '%d-%d' % (first, last)
+                    char_range = 'c%d-%d' % (first, last)
         
         if not longest_sentence:
             ## no slot fills
@@ -176,7 +195,8 @@ class Scorer:
         ## duplicate sentences do occur in the KBA corpus.
         slot_equiv_id = hashlib.md5(longest_sentence.encode('utf8')).hexdigest()
 
-        for slot_name in slot_names[entity_representation['entity_type']]:
+        for slot_name in entity_representation['slot_names']:
+            if not slot_name.isupper(): continue
             ## for toy system, just assert that longest sentence is
             ## the slot fill for every slot name            
             yield (
@@ -185,6 +205,6 @@ class Scorer:
                 ## hack to inspect the sentences instead of just
                 ## seeing byte ranges
                 #longest_sentence,
-                byte_range,
+                char_range,
                 )
         

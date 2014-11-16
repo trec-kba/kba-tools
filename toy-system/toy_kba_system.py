@@ -42,6 +42,7 @@ import re
 import os
 import sys
 import json
+import yaml
 import time
 import copy
 import logging
@@ -51,14 +52,17 @@ import streamcorpus
 ## installed on early python too.
 import argparse
 parser = argparse.ArgumentParser(description=__doc__)
-parser.add_argument(dest="entities",   help=".json file containing array of entity IDs, groups, types")
-parser.add_argument(dest="corpus", help="name of directory containing corpus hourly dirs, name must be corpus_id")
+parser.add_argument(dest="mode",   help="'simple' baseline and 'slots' baseline")
+parser.add_argument(dest="filter_topics",   help=".json file of filter-topics")
+parser.add_argument(dest="profiles",   help=".json (or .yaml) file containing profiles map from target_id to lists of judged documents and a set of slots")
+parser.add_argument(dest="corpus", help="name of directory containing XX/YY/stream_id.sc.xz.gpg files")
 parser.add_argument(dest="output", help="filename to create for storing output of this run")
-parser.add_argument("--recall-filters", default=None, help="Optional .json file containing map from target_id to name strings for high-recall filtering.  This might be hand constructed or use APIs such as WP redirects.")
 parser.add_argument("--max", dest="max_docs", type=int, default=100, help="limit number of docs we examine")
 parser.add_argument("--cutoff", dest="cutoff", type=int, default=400, help="relevance cutoff, measured in thousandths")
-parser.add_argument("--date-hour", default='', help="date-hour directory name")
+parser.add_argument("--target-id", default='', help="specific target_id to run")
+parser.add_argument("--names-frac", default=False, action='store_true', help="use fraction of name length as confidence")
 parser.add_argument("--ssf", default=False, action="store_true", help="generate Streaming Slot Filling (SSF) results instead of the default Cummulative Citation Recommendation (CCR)")
+parser.add_argument("--slot-names", default=None, help="path to JSON file mapping entity_type to list of slot_names")
 args = parser.parse_args()
 
 logger = logging.getLogger("kba-toy-system")
@@ -81,44 +85,61 @@ output = open(args.output, "wb+")
 import toy_kba_algorithm
 
 ## load entities
-filter_topics = json.load(open(args.entities))
+filter_topics = json.load(open(args.filter_topics))
 
 ## set the topic set identifier in filter_run
-filter_run["topic_set_id"] = filter_topics["topic_set_id"]
+#filter_run["topic_set_id"] = filter_topics["topic_set_id"]
+
+if args.profiles.endswith('.json'):
+    profiles = json.load(open(args.profiles))
+elif args.profiles.endswith('.yaml'):
+    profiles = yaml.load(open(args.profiles))
 
 ## init our toy algorithm
 entities = filter_topics["targets"]
-if args.recall_filters:
-    recall_filters = json.load(open(args.recall_filters))
-else:
-    recall_filters = {}
-entity_representations = toy_kba_algorithm.prepare_entities(entities, recall_filters)
+
+if args.mode not in ['slots', 'simple']:
+    sys.exit("mode argument must be either 'slots' or 'simple'")
+
+conf_heuristic = toy_kba_algorithm.LEN_FRAC
+if not args.names_frac:
+    conf_heuristic = toy_kba_algorithm.NAMES_FRAC
+
+recall_filters = {}
+for target_id, data in profiles['entities'].iteritems():
+    recall_filters[target_id] = []
+    for slot_name, values in data['slots'].iteritems():
+        if slot_name.isupper() and args.mode == 'slots':
+            for val in values:
+                recall_filters[target_id].append(val['value'])
+        elif args.mode == 'simple' and slot_name == 'canonical_name':                
+            recall_filters[target_id].append(values)
+            recall_filters[target_id] += values.split()
+
+print recall_filters
+
+slot_names = {}
+if args.slot_names:
+    slot_names = json.load(open(args.slot_names))
+
+entity_representations = toy_kba_algorithm.prepare_entities(
+    entities, recall_filters=recall_filters, 
+    slot_names=slot_names,
+)
 logger.info( json.dumps(entity_representations, indent=4, sort_keys=True) )
 
 ## set the corpus identifier in filter_run
 corpus_id_parts = args.corpus.split("/")
 filter_run["corpus_id"] = corpus_id_parts[-1] or corpus_id_parts[-2]
 
-## prepare to iterate over all hours in corpus in chronological order
-if args.date_hour:
-    ## for parallel mode, we read a single date_hour dir from this
-    ## argument
-    date_hour_list = [args.date_hour]
-    print_comments = False
-
-else:
-    date_hour_list = os.listdir(args.corpus)
-    date_hour_list.sort()
-    print_comments = True
-
 ## store some non-required run info of our own design to the
 ## filter_run dict to store in our submission... not too much, just a
 ## bit of context for humans.
 filter_run["run_info"] = {
     "num_entities": len(entities),
-    "num_stream_hours": len(date_hour_list)
     }
 
+print_comments = False
 if print_comments:
     ## create json string (just one line, no pretty printing!)
     filter_run_json_string = json.dumps(filter_run)
@@ -133,33 +154,39 @@ num_filter_results = 0
 num_docs = 0
 num_stream_hours = 0
 
-## iterate over stream in chronological order (see sort above)
-for date_hour in date_hour_list:
+if args.target_id:
+    ## for parallel mode, just do one
+    target_ids = [args.target_id]
+else:
+    target_ids = [rec['target_id'] for rec in filter_topics['targets']
+                  if rec['training_time_range_end']]
+
+for target_id in target_ids:
 
     ## only go up to max_docs
     if num_docs >= args.max_docs:
         break
 
-    logger.info("Processing " + date_hour)
+    logger.info("Processing " + target_id)
 
-    ## iterate over all files in this hour
-    date_hour_path = os.path.join(args.corpus, date_hour)
-
-    for chunk_file_name in os.listdir(date_hour_path):
-
-        if chunk_file_name == "stats.json":
-            continue
-
+    for citation in profiles['entities'][target_id]['citations']:
         ## only go up to max_docs
         if num_docs >= args.max_docs:
             break
 
-        num_stream_hours += 1
+        stream_id = citation['mention_id'].split('#')[0]
+        epoch_ticks, doc_id = stream_id.split('-')
+        first = doc_id[:2]
+        second = doc_id[2:4]
 
-        chunk_path = os.path.join(date_hour_path, chunk_file_name)
+        chunk_path = os.path.join(args.corpus, first, second, stream_id) + '.sc.xz.gpg'
 
         ## read StreamItem instances until we hit prescribed max,
         ## which might take more than one chunk file
+
+        if not os.path.exists(chunk_path):
+            logger.critical('failed to find %s' % chunk_path)
+            continue
         
         for si in streamcorpus.Chunk(path=chunk_path):
             if num_docs == args.max_docs:
@@ -168,6 +195,7 @@ for date_hour in date_hour_list:
             if not si.body.clean_visible:
                 ## This sytem only considers docs that have
                 ## clean_visible text
+                logger.critical('giving up for lack of clean_visible')
                 continue
 
             ## count docs considered
@@ -178,16 +206,20 @@ for date_hour in date_hour_list:
             
             ## give up if the scorer fails
             if not scorer.ready:
+                logger.critical('failed because scorer is not ready')
                 continue
 
-            for target_id, entity_repr in entity_representations.items():
+            entity_repr = entity_representations[target_id]
 
+            if 1:
                 ## run a filter algorithm
                 confidence, relevance, contains_mention = \
-                    scorer.assess_target(entity_repr)
+                    scorer.assess_target(entity_repr, conf_heuristic)
                 num_entity_doc_compares += 1
 
-                if confidence > args.cutoff:
+                if not confidence > args.cutoff:
+                    logger.info('dropping line for low conf=%f' % confidence)
+                else:
                     ## assemble line in the format specified on
                     ## http://trec-kba.org/trec-kba-2013.shtml#submissions
                     ccr_rec = [
@@ -201,7 +233,7 @@ for date_hour in date_hour_list:
                         confidence, relevance, contains_mention,
 
                         ## identify the directory containing this chunk file
-                        date_hour, 
+                        '', #date_hour, 
 
                         ## default values for SSF run
                         "NULL", -1, "0-0",
@@ -232,10 +264,12 @@ for date_hour in date_hour_list:
 
                                 recs.append(ssf_rec)
 
+                    logger.debug('saving %d recs' % len(recs))
                     for rec in recs:
-                        assert len(rec) == 11
+                        assert len(rec) == 11, (len(rec), rec)
 
                         output.write("\t".join(map(str, rec)) + "\n")
+                        output.flush()
 
                         ## keep count of how many we have save total
                         num_filter_results += 1
